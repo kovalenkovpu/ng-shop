@@ -1,6 +1,6 @@
 <hr />
 <ul>
-  <button (click)="onBuy(product)">Add to Cart</button>
+  <button (click)="onBuy(product)" [disabled]="!product.isAvailable">Add to Cart</button>
   <h3 class="product-info">Product information: {{ product.name }}</h3>
   <ul class="product-specs">
       <li>Price: {{ product.price }}</li>
