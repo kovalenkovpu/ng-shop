@@ -1,0 +1,14 @@
+<hr />
+<ul>
+  <button (click)="onBuy(product)">Add to Cart</button>
+  <h3 class="product-info">Product information: {{ product.name }}</h3>
+  <ul class="product-specs">
+      <li>Price: {{ product.price }}</li>
+      <li>Onstock: {{ product.isAvailable }}</li>
+      <li>Description: {{ product.description }}</li>
+  </ul>
+  <p class="product-specs-header">Specifications</p>
+  <ul class="product-specs">
+    <li *ngFor="let spec of product.specs; ">{{ spec }}</li>
+  </ul>
+</ul>

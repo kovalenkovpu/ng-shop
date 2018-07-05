@@ -1,0 +1,9 @@
+<div>
+  <p>CART</p>
+  <ol>
+    <li *ngFor="let purchase of purchases">{{ purchase.name }}, {{ purchase.price }} USD</li>
+  </ol>
+  <p>Total Price: {{totalAmount}}</p>
+  <p>Quantity: {{totalQuantity}}</p>
+  <button (click)="onClear()">Clear Cart</button>
+</div>
