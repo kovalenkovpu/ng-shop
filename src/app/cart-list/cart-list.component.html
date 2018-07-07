@@ -1,0 +1,13 @@
+<div class="cart-container">
+    <p>CART</p>
+    <div class="cart-item-container">
+      <app-cart-item
+          *ngFor="let purchase of purchases"
+          [purchase]="purchase"
+          (deleteItem)="onDelete($event)"
+      ></app-cart-item>
+    </div>
+    <p>Total Price: {{totalAmount}}</p>
+    <p>Quantity: {{totalQuantity}}</p>
+    <button (click)="onClear()">Clear Cart</button>
+</div>

@@ -12,3 +12,9 @@ specifications of a product;
     creates `channel$` to emit data from `Product component` when Product is added to Cart;
     `Cart component` subscribes to this `channel$`;
     `Cart component` changes its variables respectively when sees changes;
+
+
+# Task2 branch
+1. `Product component` changed to be representative only;
+2. `Add to Cart` logic moved above to `Product List Component`, disabled if product is not available;
+3. Refactored Service registration (only inside `@injectable`);

@@ -1,8 +1,11 @@
-.product-container {
+.cart-container {
+    margin: 20px;
+}
+
+.cart-item-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
     max-width: 900px;
-    margin: 20px;
 }

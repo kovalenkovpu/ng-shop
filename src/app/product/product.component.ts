@@ -1,21 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../models/product.model';
-import { CartService } from '../services/cart.service';
-import { CommunicatorService } from '../services/communicator.service';
 
 @Component({
-  selector: 'app-product-component',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+    selector: 'app-product-component',
+    templateUrl: './product.component.html',
+    styleUrls: ['./product.component.css']
 })
 
 export class ProductComponent {
-  @Input() product: Product;
+    @Input() product: Product;
+    @Output() addToCart = new EventEmitter<Product>();
 
-  constructor(public cartService: CartService, private communicatorService: CommunicatorService) { }
-
-  onBuy(product) {
-    this.cartService.addPurchase(product);
-    this.communicatorService.publishData(product.id);
-  }
+    onAddToCart(): void {
+        event.preventDefault();
+        this.addToCart.emit(this.product);
+    }
 }

@@ -2,36 +2,49 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CartService {
-  purchases: Array<Product> = [];
+    purchases: Array<Product> = [];
 
-  constructor() { }
+    constructor() { }
 
-  getPurchaseList(): Array<Product> {
-    return this.purchases;
-  }
+    getPurchaseList(): Array<Product> {
+        return this.purchases;
+    }
 
-  addPurchase(product): void {
-    this.purchases.push(product);
-  }
+    addPurchase(product): void {
+        this.purchases.push(product);
 
-  getAmount(): number {
-    return this.purchases.length;
-  }
+        // todo: track the quantity on adding the purchase -> structure should be different
+        /*
+            purchases = {
+                id: {
+                    Product,
+                    amount
+                }
+            };
 
-  getQuantity(): number {
-    let acc = 0;
+         */
+    }
 
-    acc = this.purchases.reduce((sum, item) => {
-      return sum += item.price;
-    }, 0);
+    getAmount(): number {
+        return this.purchases.length;
+    }
 
-    return acc;
-  }
+    getQuantity(): number {
+        return this.purchases.reduce((sum, item) => {
+          return sum += item.price;
+        }, 0);
+    }
 
-  clearCart() {
-    this.purchases = [];
-  }
+    clearCart() {
+        this.purchases = [];
+    }
+
+    removePurchase(id): Array<Product> {
+        return this.purchases = this.purchases.filter(purchase => purchase.id !== id);
+
+        // return this.purchases;
+    }
 }

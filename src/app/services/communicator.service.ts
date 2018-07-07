@@ -5,10 +5,10 @@ import { Subject } from 'rxjs';
     providedIn: 'root'
 })
 export class CommunicatorService {
-  private channel = new Subject<string>();
+  private channel = new Subject<number>();
   public channel$ = this.channel.asObservable();
 
-  publishData(data: string) {
+  publishData(data: number) {
     this.channel.next(data);
   }
 }
