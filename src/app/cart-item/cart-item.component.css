@@ -1,0 +1,39 @@
+.cart-item {
+    display: block;
+    position: relative;
+    background: #fc0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 2px;
+    margin: 5px;
+    padding: 5px 20px 5px 5px;
+}
+
+.cart-item-title {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+
+.cart-item-price {
+    margin: 0;
+    padding: 0;
+}
+
+.delete-item {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.amount-decrease,
+.amount-increase {
+    cursor: pointer;
+    font-weight: 700;
+    margin: 0 5px;
+}
+
+.many {
+    border: 1px dashed black;
+}

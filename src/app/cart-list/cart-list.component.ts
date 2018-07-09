@@ -1,18 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CartService } from '../services/cart.service';
 import { CommunicatorService } from '../services/communicator.service';
-import { Product } from '../models/product.model';
+import { Purchase } from '../models/purchase.model';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 
 @Component({
     selector: 'app-cart-list',
     templateUrl: './cart-list.component.html',
-    styleUrls: ['./cart-list.component.css']
+    styleUrls: ['./cart-list.component.css'],
 })
-export class CartListComponent implements OnInit, OnDestroy {
+export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
+    @ViewChild(CartItemComponent)
+    child: CartItemComponent;
+
     private sub: Subscription;
-    purchases: Array<Product> = [];
+    purchases: Array<Purchase> = [];
     totalAmount = 0;
     totalQuantity = 0;
 
@@ -23,7 +27,7 @@ export class CartListComponent implements OnInit, OnDestroy {
 
         this.sub = this.communicatorService.channel$.subscribe(
             () => {
-                    this.totalAmount = this.cartService.getQuantity();
+                    this.totalAmount = this.cartService.getTotalPrice();
                     this.totalQuantity = this.cartService.getAmount();
                     this.purchases = this.cartService.getPurchaseList();
                 }
@@ -32,6 +36,10 @@ export class CartListComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+
+    ngAfterViewInit() {
+        console.log(`@ViewChild init, ${this.child}`);
     }
 
     onClear() {
@@ -43,7 +51,19 @@ export class CartListComponent implements OnInit, OnDestroy {
 
     onDelete(id): void {
         this.purchases = this.cartService.removePurchase(id);
-        this.totalAmount = this.cartService.getQuantity();
+        this.totalAmount = this.cartService.getTotalPrice();
+        this.totalQuantity = this.cartService.getAmount();
+    }
+
+    onIncrease(id): void {
+        this.purchases = this.cartService.increaseAmount(id);
+        this.totalAmount = this.cartService.getTotalPrice();
+        this.totalQuantity = this.cartService.getAmount();
+    }
+
+    onDecrease(id): void {
+        this.purchases = this.cartService.decreaseAmount(id);
+        this.totalAmount = this.cartService.getTotalPrice();
         this.totalQuantity = this.cartService.getAmount();
     }
 }

@@ -1,0 +1,9 @@
+<div class="cart-item" [ngClass]="{ 'many': purchase.amount > 1}">
+    <p class="cart-item-title">Title: {{ purchase.product.name }}</p>
+    <p class="cart-item-price">Price: {{ purchase.product.price }} USD</p>
+    <p class="cart-item-amount">Amount: {{ purchase.amount }}</p>
+    <span class="amount-increase" (click)="onIncrease(purchase.id)">add</span>
+    <span>|</span>
+    <span class="amount-decrease" (click)="onDecrease(purchase.id)">delete</span>
+    <span class="delete-item" (click)="onDelete(purchase.id)">x</span>
+</div>

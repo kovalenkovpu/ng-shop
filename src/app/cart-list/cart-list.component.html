@@ -1,13 +1,17 @@
-<div class="cart-container">
+<div class="cart-container" (mouseenter)="child?.onMouseEnter($event)">
     <p>CART</p>
     <div class="cart-item-container">
       <app-cart-item
           *ngFor="let purchase of purchases"
           [purchase]="purchase"
           (deleteItem)="onDelete($event)"
+          (increaseAmount)="onIncrease($event)"
+          (decreaseAmount)="onDecrease($event)"
+          appHightlightOnHover="lightblue"
+          #child
       ></app-cart-item>
     </div>
-    <p>Total Price: {{totalAmount}}</p>
+    <p>Total Price: {{totalAmount}}</p>eceeeee
     <p>Quantity: {{totalQuantity}}</p>
     <button (click)="onClear()">Clear Cart</button>
 </div>

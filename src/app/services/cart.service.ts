@@ -1,50 +1,94 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
+import { Purchase } from '../models/purchase.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CartService {
-    purchases: Array<Product> = [];
+    purchases: Array<Purchase> = [];
 
     constructor() { }
 
-    getPurchaseList(): Array<Product> {
+    getPurchaseList(): Array<Purchase> {
         return this.purchases;
     }
 
-    addPurchase(product): void {
-        this.purchases.push(product);
+    addPurchase(product: Product): void {
+        let added = false;
 
-        // todo: track the quantity on adding the purchase -> structure should be different
-        /*
-            purchases = {
-                id: {
-                    Product,
-                    amount
+        if (this.purchases.length) {
+            this.purchases.forEach(purchase => {
+                if (product.id === purchase.id) {
+                    purchase.amount++;
+                    added = true;
                 }
-            };
+            });
+        }
 
-         */
+        if (!added) {
+            this.purchases.push({
+                id: product.id,
+                product: product,
+                amount: 1
+            });
+        }
     }
 
     getAmount(): number {
-        return this.purchases.length;
+        let amount = 0;
+
+        if (this.purchases.length) {
+            this.purchases.forEach(purchase => {
+                amount += purchase.amount;
+            });
+        }
+
+        return amount;
     }
 
-    getQuantity(): number {
-        return this.purchases.reduce((sum, item) => {
-          return sum += item.price;
-        }, 0);
+    getTotalPrice(): number {
+        let totalPrice = 0;
+
+        if (this.purchases.length) {
+            this.purchases.forEach(purchase => {
+                const { price } = purchase.product;
+
+                totalPrice = totalPrice + purchase.amount * price;
+            });
+        }
+
+        return totalPrice;
     }
 
     clearCart() {
         this.purchases = [];
     }
 
-    removePurchase(id): Array<Product> {
-        return this.purchases = this.purchases.filter(purchase => purchase.id !== id);
+    removePurchase(id): Array<Purchase> {
+        // removes all purchases for given id
+        return this.purchases = this.purchases.filter(purchase => id !== purchase.id);
+    }
 
-        // return this.purchases;
+    increaseAmount(id) {
+        return this.purchases = this.purchases.map(purchase => {
+            if (purchase.id === id) {
+                purchase.amount++;
+            }
+
+            return purchase;
+        });
+    }
+
+    decreaseAmount(id) {
+        return this.purchases = this.purchases.map(purchase => {
+            if (purchase.id === id) {
+                if (purchase.amount > 1) {
+                    purchase.amount = purchase.amount - 1;
+                }
+            }
+
+            return purchase;
+        });
     }
 }

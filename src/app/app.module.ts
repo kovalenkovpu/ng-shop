@@ -6,6 +6,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { HightlightOnHoverDirective } from './modules/shared-module/hightlight-on-hover.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     ProductComponent,
     ProductListComponent,
     CartListComponent,
-    CartItemComponent
+    CartItemComponent,
+    HightlightOnHoverDirective
   ],
   imports: [
     BrowserModule
