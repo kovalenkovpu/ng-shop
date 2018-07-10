@@ -1,9 +1,9 @@
-import {Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { CartService } from '../services/cart.service';
-import { CommunicatorService } from '../services/communicator.service';
-import { Purchase } from '../models/purchase.model';
+import { CartService } from '../../services/cart.service';
+import { CommunicatorService } from '../../services/communicator.service';
+import { Purchase } from '../../models/purchase.model';
 import { CartItemComponent } from '../cart-item/cart-item.component';
 
 @Component({

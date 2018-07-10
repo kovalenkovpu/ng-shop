@@ -13,6 +13,7 @@ export class HightlightOnHoverDirective {
 
     @HostListener('mouseenter')
     onMouseEnter() {
+        console.log('Highlight on hover!');
         this.highlight(this.color || 'grey');
     }
     @HostListener('mouseleave')

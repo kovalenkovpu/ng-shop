@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener} from '@angular/core';
-import { Purchase } from '../models/purchase.model';
+import { Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener } from '@angular/core';
+import { Purchase } from '../../models/purchase.model';
 
 @Component({
     selector: 'app-cart-item',
@@ -36,8 +36,7 @@ export class CartItemComponent implements OnInit {
         this.decreaseAmount.emit(this.purchase.id);
     }
 
-    onMouseEnter($event) {
+    onMouseEnter() {
         console.log(`Entered mouse`);
-        console.log($event.target);
     }
 }
