@@ -19,15 +19,15 @@ export class ProductListComponent implements OnInit, AfterViewInit {
       private communicatorService: CommunicatorService
   ) {}
 
-  onAddToCart(product: Product): void {
-      this.cartService.addPurchase(product);
-      this.communicatorService.publishData(product.id);
-  }
-
   ngOnInit() {
     this.product = this.productService.getProduct();
     this.products = this.productService.getProducts();
   }
 
   ngAfterViewInit() {}
+
+  onAddToCart(product: Product): void {
+      this.cartService.addPurchase(product);
+      this.communicatorService.publishData(product.id);
+  }
 }

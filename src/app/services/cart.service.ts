@@ -17,14 +17,12 @@ export class CartService {
     addPurchase(product: Product): void {
         let added = false;
 
-        if (this.purchases.length) {
             this.purchases.forEach(purchase => {
                 if (product.id === purchase.id) {
                     purchase.amount++;
                     added = true;
                 }
             });
-        }
 
         if (!added) {
             this.purchases.push({
@@ -38,11 +36,9 @@ export class CartService {
     getAmount(): number {
         let amount = 0;
 
-        if (this.purchases.length) {
             this.purchases.forEach(purchase => {
                 amount += purchase.amount;
             });
-        }
 
         return amount;
     }
@@ -50,13 +46,11 @@ export class CartService {
     getTotalPrice(): number {
         let totalPrice = 0;
 
-        if (this.purchases.length) {
             this.purchases.forEach(purchase => {
                 const { price } = purchase.product;
 
                 totalPrice = totalPrice + purchase.amount * price;
             });
-        }
 
         return totalPrice;
     }
@@ -81,14 +75,22 @@ export class CartService {
     }
 
     decreaseAmount(id) {
-        return this.purchases = this.purchases.map(purchase => {
+        const res = [];
+
+        this.purchases.forEach(purchase => {
             if (purchase.id === id) {
                 if (purchase.amount > 1) {
                     purchase.amount = purchase.amount - 1;
+                    res.push(purchase);
                 }
             }
-
-            return purchase;
+            if (purchase.id !== id) {
+                res.push(purchase);
+            }
         });
+
+        this.purchases = res;
+
+        return this.purchases;
     }
 }

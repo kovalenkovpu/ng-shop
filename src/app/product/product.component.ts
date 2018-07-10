@@ -12,7 +12,6 @@ export class ProductComponent {
     @Output() addToCart = new EventEmitter<Product>();
 
     onAddToCart(): void {
-        event.preventDefault();
         this.addToCart.emit(this.product);
     }
 }

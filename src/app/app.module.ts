@@ -6,19 +6,19 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
-import { HightlightOnHoverDirective } from './modules/shared-module/hightlight-on-hover.directive';
+import { SharedModuleModule } from './modules/shared-module/shared-module.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductComponent,
-    ProductListComponent,
-    CartListComponent,
-    CartItemComponent,
-    HightlightOnHoverDirective
+      AppComponent,
+      ProductComponent,
+      ProductListComponent,
+      CartListComponent,
+      CartItemComponent,
   ],
   imports: [
-    BrowserModule
+      BrowserModule,
+      SharedModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
