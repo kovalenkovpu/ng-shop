@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 // import { SharedModuleModule } from './shared-module/shared-module.module';
 import { CartModule } from './cart-module/cart.module';
 import { ProductsModule } from './products-module/products.module';
+import { CoreModule } from './core-module/core-module.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ProductsModule } from './products-module/products.module';
       BrowserModule,
       ProductsModule,
       CartModule,
+      CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
