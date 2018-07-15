@@ -10,7 +10,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 @NgModule({
     imports: [
         CommonModule,
-        SharedModuleModule
+        SharedModuleModule,
     ],
     exports: [ProductsComponent],
     declarations: [ProductsComponent, ProductComponent, ProductListComponent, ContactUsComponent]

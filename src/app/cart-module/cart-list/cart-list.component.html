@@ -1,17 +1,23 @@
 <div class="cart-container" (mouseenter)="child?.onMouseEnter($event)">
     <p>CART</p>
     <div class="cart-item-container">
-      <app-cart-item
-          *ngFor="let purchase of purchases"
+        <ul (click)="onSortBy($event)" class="sorter-controls">Sort By:
+            <li class="sorter-class-price" data-sort="price">Price</li>
+            <li class="sorter-class-amount" data-sort="amount">Amount</li>
+            <li class="sorter-class-name" data-sort="name">Name</li>
+        </ul>
+
+        <app-cart-item
+          *ngFor="let purchase of purchases | orderByPurchase : sortField : sortOrder"
           [purchase]="purchase"
           (deleteItem)="onDelete($event)"
           (increaseAmount)="onIncrease($event)"
           (decreaseAmount)="onDecrease($event)"
           appHightlightOnHover="lightblue"
           #child
-      ></app-cart-item>
+        ></app-cart-item>
     </div>
-    <p>Total Price: {{totalAmount}}</p>
+    <p>Total Price: {{totalAmount | currency:'USD':'symbol':'3.2-2'}}</p>
     <p>Quantity: {{totalQuantity}}</p>
     <button (click)="onClear()">Clear Cart</button>
 </div>

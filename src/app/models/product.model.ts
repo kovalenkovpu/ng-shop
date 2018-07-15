@@ -18,7 +18,7 @@ export class Product {
     public isAvailable: boolean,
     public description?: string,
     public specs?: Array<string>,
-    public category?: Array<Category>
+    public category?: Array<string>
   ) {
     this.name = name || 'No name';
     this.price = price || 0;

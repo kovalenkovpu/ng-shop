@@ -1,14 +1,25 @@
+# Task4 branch
+1. Currency pipe to `Cart Item`, `Cart List`, `Product` components;
+2. Date pipe for date in `Contact Us` component;
+3. Uppercase pipe for Category in `Product` component;
+4. Async pipe for `Product List` component;
+5. `orderBy` pipe for sorting the products array, registered in `Shared Module`;
+6. `orderBy` pipe used for `Product List` component;
+7. `orderByPurchase` created for `Cart List` component, because structure is different;
+8. Sorting controls for `Cart List`.
+
+
 # Task3 branch
-1. Architecture changed to modules
-2. LocalStorageService, 
-3. ConfigOptionsService, 
-4. ConstantsService registered with @useValue
-5. GeneratorService registered with @useFactory
-6. CoreModule created
-7. LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService registered inside CoreModule
-8. ContactUs demo component is created, services injected
-9. AddClickHostDirective created and registered in CoreModule
-10. AddClickHostDirective works for Contact Us component
+1. Architecture changed to modules;
+2. LocalStorageService;
+3. ConfigOptionsService;
+4. ConstantsService registered with @useValue;
+5. GeneratorService registered with @useFactory;
+6. CoreModule created;
+7. LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService registered inside CoreModule;
+8. ContactUs demo component is created, services injected;
+9. AddClickHostDirective created and registered in CoreModule;
+10. AddClickHostDirective works for Contact Us component.
 
 
 # Task2 branch

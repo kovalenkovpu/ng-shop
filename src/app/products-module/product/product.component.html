@@ -3,9 +3,10 @@
     <ul>
         <h3 class="product-info">Product information: {{ product.name }}</h3>
         <ul class="product-detailed-info">
-            <li>Price: {{ product.price }}</li>
+            <li>Price: {{ product.price | currency:'USD':'symbol':'3.2-2' }}</li>
             <li>Onstock: {{ product.isAvailable }}</li>
             <li>Description: {{ product.description }}</li>
+            <li>Category: <span *ngFor="let category of product.category">{{ category | uppercase }}<br></span></li>
         </ul>
             <p class="product-specs-header">Specifications</p>
         <ul class="product-specs-list">

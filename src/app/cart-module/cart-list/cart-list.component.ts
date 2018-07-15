@@ -19,6 +19,8 @@ export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
     purchases: Array<Purchase> = [];
     totalAmount = 0;
     totalQuantity = 0;
+    sortOrder = true; // asc by default
+    sortField = 'name';
 
     constructor(public cartService: CartService, private communicatorService: CommunicatorService) { }
 
@@ -65,5 +67,13 @@ export class CartListComponent implements OnInit, OnDestroy, AfterViewInit {
         this.purchases = this.cartService.decreaseAmount(id);
         this.totalAmount = this.cartService.getTotalPrice();
         this.totalQuantity = this.cartService.getAmount();
+    }
+
+    onSortBy($event) {
+        this.sortField === $event.srcElement.dataset.sort ?
+            this.sortOrder = !this.sortOrder :
+            this.sortOrder = true;
+
+        this.sortField = $event.srcElement.dataset.sort;
     }
 }

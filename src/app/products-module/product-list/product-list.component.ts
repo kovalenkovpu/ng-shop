@@ -11,7 +11,7 @@ import { CommunicatorService } from '../../services/communicator.service';
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
   product: Product;
-  products: Array<Product>;
+  products: Promise<Array<Product>>;
 
   constructor(
       public productService: ProductsService,

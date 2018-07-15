@@ -17,6 +17,7 @@ const appVersionInst = new ConstantsService();
 })
 export class ContactUsComponent implements OnInit {
     appObj: Object;
+    date: number;
 
     constructor(
         @Inject(Random_Literal) private random_string: string,
@@ -31,5 +32,6 @@ export class ContactUsComponent implements OnInit {
         console.log('Item from LocalStorage: ', this.localStor.getItem('id'));
 
         this.appObj = this.appVersion.getData();
+        this.date = Date.now();
     }
 }
